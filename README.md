@@ -1,175 +1,59 @@
-# tf-scaffold
+# terraform-aws-documentdb
 
+[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-documentdb/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-documentdb)
+[![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-documentdb.svg)](https://github.com/JamesWoolfenden/terraform-aws-documentdb/releases/latest)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/JamesWoolfenden/terraform-aws-documentdb.svg?label=latest)](https://github.com/JamesWoolfenden/terraform-aws-documentdb/releases/latest)
+![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.14.0-blue.svg)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/JamesWoolfenden/terraform-aws-documentdb/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-aws-documentdb&benchmark=CIS+AWS+V1.2)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![checkov](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
+[![Infrastructure Tests](https://www.bridgecrew.cloud/badges/github/jameswoolfenden/terraform-aws-documentdb/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=JamesWoolfenden%2Fterraform-aws-documentdb&benchmark=INFRASTRUCTURE+SECURITY)
 
-This repository exists to help with new terraform projects, and with automation and training.
-The repository is designed to create the structure- scaffold that is alway needed for a new Terraform project.
-Included are the basic Github Actions.
-To clone scaffold repository but with no .git folder.
+---
 
-## Powershell
-
-```powershell
-git clone --depth=1 git@github.com:JamesWoolfenden/tf-scaffold.git scaffold
-rm scaffold\.git -recurse -force
-```
-
-Edit your profile and add:
-
-```powershell
-function scaffold {
-   param(
-         [parameter(mandatory=$true)]
-         [string]$name,
-         [string]$branch="master")
-   git clone --depth=1 --branch=$branch git@github.com:JamesWoolfenden/tf-scaffold.git "$name"
-   rm "$name\.git" -recurse -force
-}
-```
-
-or
-
-```powershell
-function scaffold {
-   param(
-         [parameter(mandatory=$true)]
-         [string]$name,
-         [string]$branch="master",
-         [switch]$repo=$false)
-
-   if (!(test-path .\$name))
-   {
-       git clone --depth=1 --branch=$branch git@github.com:JamesWoolfenden/tf-scaffold.git "$name"
-   }
-   else{
-      write-warning "Path $name already exists"
-      return
-   }
-
-   rm "$name\.git" -recurse -force
-   cd $name
-   echo "# %name" >README.md
-   if ($repo)
-   {
-      git init|git add -A
-      pre-commit install
-      git commit -m "Initial Draft"
-   }
-}
-```
-
-Then you can use:
-
-```powershell
-scaffold -name hello-world
-```
-
-or to start a new git repo as well:
-
-```powershell
-scaffold -name hello-world -repo
-```
-
-To make a new project anytime you like.
-
-## \*Nix
-
-```cli
-git clone --depth=1 git@github.com:JamesWoolfenden/tf-scaffold.git scaffold| rm !$/.git -rf
-```
-
-Or you add this to your ~/.bashrc
-
-```bash
-function scaffold() {
-if [ -z "$1" ]
-then
-   name="scaffold"
-else
-   name=$1
-fi
-
-if [ -z "$2" ]
-then
-   branch="master"
-else
-   branch=$2
-fi
-
-
-echo "git clone --depth=1 --branch $branch git@github.com:JamesWoolfenden/tf-scaffold.git $name"
-git clone --depth=1 --branch $branch git@github.com:JamesWoolfenden/tf-scaffold.git $name
-rm $name/.git -rf
-}
-```
+Terraform module a documentdb. It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 ## Usage
 
-Once it's in your profile, pretty straigh forward:
+This is just a very basic example.
 
-```cli
- $ scaffold terraform-aws-generic
-git clone --depth=1 git@github.com:JamesWoolfenden/tf-scaffold.git terraform-aws-generic
-Cloning into 'terraform-aws-generic'...
-remote: Enumerating objects: 14, done.
-remote: Counting objects: 100% (14/14), done.
-remote: Compressing objects: 100% (9/9), done.
-remote: Total 14 (delta 0), reused 10 (delta 0), pack-reused 0
-Receiving objects: 100% (14/14), done.
+![alt text](./diagram/documentdb.png)
+
+Include this repository as a module in your existing Terraform code:
+
+```hcl
+module "documentdb" {
+  source                 = "jameswoolfenden/documentdb/aws"
+  common_tags            = var.common_tags
+}
 ```
 
-## So what's in it
+## IAM Permissions
 
-### .gitignore
+Policies used to create and destroy this resource:
 
-Has good defaults for working with Terraform
-
-### .pre-commit-config.yaml
-
-Has a standard set of pre-commit hooks for working with Terraform and AWS. You'll need to install the pre-commit framework <https://pre-commit.com/#install>.
-And after youve added all these file to your new repo, in the root of your new repository:
-
-```cli
-pre-commit install
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "documentdb:DELETE",
+        "documentdb:GET",
+        "documentdb:PATCH",
+        "documentdb:POST",
+        "documentdb:PUT",
+        "documentdb:SetWebACL",
+        "documentdb:UpdateRestApiPolicy"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
 ```
 
-### main.tf
-
-This is an expected file for Terraform modules. I don't use it.
-
-### Makefile
-
-This is just to make like easier for you. Problematic if you are cross platform as make isn't very good/awful at that.
-
-### outputs.tf
-
-A standard place to return values, either to the screen or to pass back from a module.
-
-### provider.aws.tf
-
-You are always going to be using these, I have added the most basic provider for AWS.
-
-### README.md
-
-Where all the information goes.
-
-### main.auto.tfvars
-
-This is the standard file for setting your variables in. The auto keyword ensures its picked up and used by Terraform.
-
-### variables.tf
-
-Contains a map variable **common_tags** which should be extended and used on
-every taggable object.
-
-### .dependsabot/config.yml
-
-Sets the repository to be automatically dependency scanned in github.
-
-## terraform-docs
-
-If you leave the section below in your **README.md** then the pre-commit will auto update your docs.
+## Detailed Notes
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -178,16 +62,85 @@ No requirements.
 
 ## Providers
 
-No provider.
+| Name | Version |
+|------|---------|
+| aws | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| common\_tags | This is to help you add tags to your cloud objects | `map` | n/a | yes |
+| allowed\_range | List of allowed CIDR | `list(any)` | n/a | yes |
+| authorization | What Auth to use for the method | `string` | `"AWS_IAM"` | no |
+| common\_tags | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
+| function\_name | value | `string` | n/a | yes |
+| name | value | `string` | n/a | yes |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| api | n/a |
+| url | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Related Projects
+
+Check out these related projects.
+
+- [terraform-aws-codecommit](https://github.com/jameswoolfenden/terraform-aws-documentdb) - Storing ones code
+
+## Help
+
+**Got a question?**
+
+File a GitHub [issue](https://github.com/jameswoolfenden/terraform-aws-documentdb/issues).
+
+## Contributing
+
+### Bug Reports & Feature Requests
+
+Please use the [issue tracker](https://github.com/jameswoolfenden/terraform-aws-documentdb/issues) to report any bugs or file feature requests.
+
+## Copyrights
+
+Copyright © 2019-2021 James Woolfenden
+
+## License
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+See [LICENSE](LICENSE) for full details.
+
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements. See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership. The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License. You may obtain a copy of the License at
+
+<https://www.apache.org/licenses/LICENSE-2.0>
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied. See the License for the
+specific language governing permissions and limitations
+under the License.
+
+### Contributors
+
+[![James Woolfenden][jameswoolfenden_avatar]][jameswoolfenden_homepage]<br/>[James Woolfenden][jameswoolfenden_homepage]
+
+[jameswoolfenden_homepage]: https://github.com/jameswoolfenden
+[jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
+[github]: https://github.com/jameswoolfenden
+[linkedin]: https://www.linkedin.com/in/jameswoolfenden/
+[twitter]: https://twitter.com/JimWoolfenden
+[share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-documentdb&url=https://github.com/jameswoolfenden/terraform-aws-documentdb
+[share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-documentdb&url=https://github.com/jameswoolfenden/terraform-aws-documentdb
+[share_reddit]: https://reddit.com/submit/?url=https://github.com/jameswoolfenden/terraform-aws-documentdb
+[share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/jameswoolfenden/terraform-aws-documentdb
+[share_email]: mailto:?subject=terraform-aws-documentdb&body=https://github.com/jameswoolfenden/terraform-aws-documentdb
