@@ -62,27 +62,25 @@ No requirements.
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| aws | n/a |
+No provider.
+
+## Modules
+
+No Modules.
+
+## Resources
+
+No resources.
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| allowed\_range | List of allowed CIDR | `list(any)` | n/a | yes |
-| authorization | What Auth to use for the method | `string` | `"AWS_IAM"` | no |
 | common\_tags | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
-| function\_name | value | `string` | n/a | yes |
-| name | value | `string` | n/a | yes |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| api | n/a |
-| url | n/a |
-
+No output.
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Related Projects
