@@ -1,2 +1,3 @@
 common_tags = {
-"createby" = "Terraform" }
+  "createdby" = "terraform"
+module = "terraform-aws-documentdb" }

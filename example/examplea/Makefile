@@ -1,4 +1,4 @@
-#Makefile
+# Makefile
 ifdef OS
    BLAT = $(powershell  -noprofile rm .\.terraform\ -force -recurse)
    RM = $(powershell  -noprofile rm .\.terraform\ -force -recurse)
@@ -20,6 +20,11 @@ init:
 plan:
 	terraform plan -refresh=true
 
+planned: init
+	terraform plan -out tf.plan
+	terraform show -json tf.plan  > tf.json
+	checkov -f tf.json
+
 p:
 	terraform plan -refresh=true
 
@@ -38,8 +43,10 @@ docs:
 	terraform-docs md . > README.md
 
 valid:
-	terraform fmt
+	terraform fmt -recursive
 	checkov -d . --external-checks-dir ../../checkov
+	tfsec .
+	terrascan scan
 
 target:
 	@read -p "Enter Module to target:" MODULE;
