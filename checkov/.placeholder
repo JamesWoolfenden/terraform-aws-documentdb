@@ -1,6 +1,28 @@
-https://docs.bridgecrew.io/docs/logging_19
-https://docs.bridgecrew.io/docs/bc_aws_general_28
+Check: CKV_AWS_41: "Ensure no hard coded AWS access key and secret key exists in provider"
+        PASSED for resource: aws.default
+        File: /provider.aws.tf:1-3
+        Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_5
 
-parameterers?
-- audit?
-- tls only?
+Check: CKV_AWS_74: "Ensure DocDB is encrypted at rest (default is unencrypted)"
+        PASSED for resource: aws_docdb_cluster.examplea
+        File: /..\..\aws_docdb_cluster.examplea.tf:1-24
+        Variable common_tags (of examplea.auto.tfvars) evaluated to value "[]" in expression: common_tags = ${var.common_tags}
+        Guide: https://docs.bridgecrew.io/docs/bc_aws_general_28
+
+Check: CKV_AWS_85: "Ensure DocDB Logging is enabled"
+        PASSED for resource: aws_docdb_cluster.examplea
+        File: /..\..\aws_docdb_cluster.examplea.tf:1-24
+        Variable common_tags (of examplea.auto.tfvars) evaluated to value "[]" in expression: common_tags = ${var.common_tags}
+        Guide: https://docs.bridgecrew.io/docs/logging_19
+
+Check: CKV_AWS_90: "Ensure DocDB TLS is not disabled"
+        PASSED for resource: aws_docdb_cluster_parameter_group.examplea
+        File: /..\..\aws_docdb_cluster_parameter_group.examplea.tf:1-12
+        Variable common_tags (of examplea.auto.tfvars) evaluated to value "[]" in expression: common_tags = ${var.common_tags}
+        Guide: https://docs.bridgecrew.io/docs/bc_aws_networking_37
+
+
+
+
+parameters?
+-test audit_log is enabled

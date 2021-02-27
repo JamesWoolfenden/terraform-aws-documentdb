@@ -86,6 +86,7 @@ No Modules.
 |------|-------------|------|---------|:--------:|
 | apply\_immediately | n/a | `bool` | `false` | no |
 | backup\_retention\_period | n/a | `number` | `5` | no |
+| change\_stream\_log\_retention\_duration | Defines the duration of time (in seconds) that the change stream log is retained and can be consumed. | `number` | `10800` | no |
 | cluster\_identifier | n/a | `string` | `"my-docdb-cluster"` | no |
 | common\_tags | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
 | deletion\_protection | n/a | `bool` | `false` | no |
@@ -97,8 +98,13 @@ No Modules.
 | master\_password | DocumentDB Password | `string` | n/a | yes |
 | master\_username | n/a | `string` | `"docadmin"` | no |
 | param\_group\_name | n/a | `string` | `"examplea"` | no |
+| profiler | n/a | `string` | `"disabled"` | no |
+| profiler\_sampling\_rate | Defines the sampling rate for logged operations. | `number` | `1` | no |
+| profiler\_threshold\_ms | Defines the threshold for profiler | `number` | `100` | no |
+| promotion\_tier | n/a | `number` | `0` | no |
 | subnet\_group\_name | n/a | `string` | `"docdb"` | no |
 | subnet\_list | n/a | `list(any)` | n/a | yes |
+| ttl\_monitor | n/a | `string` | `"enabled"` | no |
 
 ## Outputs
 

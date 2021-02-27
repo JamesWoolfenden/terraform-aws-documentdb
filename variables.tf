@@ -5,6 +5,10 @@ variable "common_tags" {
 
 variable "param_group_name" {
   default = "examplea"
+
+  //Length is [1–255] alphanumeric characters.
+  //First character must be a letter.
+  //Cannot end with a hyphen or contain two consecutive hyphens.
 }
 
 variable "family" {
@@ -14,7 +18,7 @@ variable "family" {
 
 variable "subnet_group_name" {
   default = "docdb"
-  //todo ensure lc
+  //todo ensure lowercase
 }
 
 variable "subnet_list" {
@@ -23,6 +27,7 @@ variable "subnet_list" {
 
 
 variable "instance_class" {
+  type    = string
   default = "db.r5.large"
 }
 
@@ -37,5 +42,11 @@ variable "instance_maintenance_window" {
 }
 
 variable "instance-prefix" {
+  type    = string
   default = "docdb-cluster-demo"
+}
+
+variable "promotion_tier" {
+  type    = number
+  default = 0
 }
