@@ -5,7 +5,7 @@ resource "aws_docdb_cluster" "examplea" {
   apply_immediately  = var.apply_immediately
   availability_zones = data.aws_availability_zones.available.names
   //defo should be set?
-  db_subnet_group_name            = aws_docdb_subnet_group.example.name
+  db_subnet_group_name            = aws_docdb_subnet_group.examplea.name
   db_cluster_parameter_group_name = aws_docdb_cluster_parameter_group.examplea.name
   deletion_protection             = var.deletion_protection
   master_username                 = var.master_username
