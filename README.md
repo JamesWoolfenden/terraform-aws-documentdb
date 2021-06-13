@@ -28,6 +28,26 @@ module "documentdb" {
 }
 ```
 
+## Costs
+
+```text
+Monthly cost estimate
+
+Project: JamesWoolfenden/terraform-aws-documentdb/example/examplea
+
+ Name                                                          Monthly Qty  Unit                Monthly Cost
+
+ module.documentdb.aws_docdb_cluster.examplea
+ └─ Backup storage                                         Monthly cost depends on usage: $0 per GB
+
+ module.documentdb.aws_docdb_cluster_instance.examplea[0]
+ ├─ Database instance (on-demand, db.r5.large)                         730  hours                    $237.25
+ ├─ Storage                                                Monthly cost depends on usage: $0 per GB
+ └─ I/O                                                    Monthly cost depends on usage: $0 per 1M requests
+
+ OVERALL TOTAL                                                                                       $237.25
+```
+
 ## IAM Permissions
 
 Policies used to create and destroy this resource:
@@ -88,7 +108,6 @@ No modules.
 | <a name="input_backup_retention_period"></a> [backup\_retention\_period](#input\_backup\_retention\_period) | n/a | `number` | `5` | no |
 | <a name="input_change_stream_log_retention_duration"></a> [change\_stream\_log\_retention\_duration](#input\_change\_stream\_log\_retention\_duration) | Defines the duration of time (in seconds) that the change stream log is retained and can be consumed. | `number` | `10800` | no |
 | <a name="input_cluster_identifier"></a> [cluster\_identifier](#input\_cluster\_identifier) | n/a | `string` | `"my-docdb-cluster"` | no |
-| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | This is to help you add tags to your cloud objects | `map(any)` | n/a | yes |
 | <a name="input_deletion_protection"></a> [deletion\_protection](#input\_deletion\_protection) | n/a | `bool` | `false` | no |
 | <a name="input_family"></a> [family](#input\_family) | n/a | `string` | `"docdb3.6"` | no |
 | <a name="input_instance-prefix"></a> [instance-prefix](#input\_instance-prefix) | n/a | `string` | `"docdb-cluster-demo"` | no |

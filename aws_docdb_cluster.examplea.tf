@@ -20,35 +20,4 @@ resource "aws_docdb_cluster" "examplea" {
   //  kms_key_id=""
   enabled_cloudwatch_logs_exports = ["audit", "profiler"]
   vpc_security_group_ids          = []
-  tags                            = var.common_tags
-}
-
-variable "deletion_protection" {
-  type    = bool
-  default = false
-}
-
-variable "backup_retention_period" {
-  type    = number
-  default = 5
-}
-
-variable "master_username" {
-  default = "docadmin"
-}
-
-
-variable "cluster_identifier" {
-  type    = string
-  default = "my-docdb-cluster"
-}
-
-variable "master_password" {
-  type        = string
-  description = "DocumentDB Password"
-  sensitive   = true
-}
-
-variable "apply_immediately" {
-  default = false
 }

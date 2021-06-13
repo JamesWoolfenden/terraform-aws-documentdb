@@ -37,7 +37,6 @@ resource "aws_docdb_cluster_parameter_group" "examplea" {
     name  = "ttl_monitor"
     value = var.ttl_monitor
   }
-  tags = var.common_tags
 }
 
 variable "profiler_sampling_rate" {

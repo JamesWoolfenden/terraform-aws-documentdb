@@ -1,2 +1,8 @@
 version: 0.1
-resource_usage: {}
+resource_usage:
+  module.documentdb.aws_docdb_cluster.examplea:
+    backup_storage_gb: 0
+  module.documentdb.aws_docdb_cluster_instance.examplea[0]:
+    data_storage_gb: 0
+    monthly_cpu_credit_hrs: 0
+    monthly_io_request: 0

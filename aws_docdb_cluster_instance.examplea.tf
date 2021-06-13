@@ -9,5 +9,4 @@ resource "aws_docdb_cluster_instance" "examplea" {
   cluster_identifier           = aws_docdb_cluster.examplea.id
   instance_class               = var.instance_class
   promotion_tier               = var.promotion_tier
-  tags                         = var.common_tags
 }

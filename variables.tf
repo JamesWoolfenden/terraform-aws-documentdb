@@ -1,8 +1,3 @@
-variable "common_tags" {
-  description = "This is to help you add tags to your cloud objects"
-  type        = map(any)
-}
-
 variable "param_group_name" {
   default = "examplea"
 
@@ -49,4 +44,34 @@ variable "instance-prefix" {
 variable "promotion_tier" {
   type    = number
   default = 0
+}
+
+variable "deletion_protection" {
+  type    = bool
+  default = false
+}
+
+variable "backup_retention_period" {
+  type    = number
+  default = 5
+}
+
+variable "master_username" {
+  default = "docadmin"
+}
+
+
+variable "cluster_identifier" {
+  type    = string
+  default = "my-docdb-cluster"
+}
+
+variable "master_password" {
+  type        = string
+  description = "DocumentDB Password"
+  sensitive   = true
+}
+
+variable "apply_immediately" {
+  default = false
 }
