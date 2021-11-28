@@ -15,9 +15,8 @@ resource "aws_docdb_cluster" "examplea" {
   preferred_maintenance_window    = "sat:05:00-sat:07:00"
   skip_final_snapshot             = true
   storage_encrypted               = true
-  //  port=""
-  //what key is used if notset?
-  //  kms_key_id=""
+
+  kms_key_id                      = var.kms_key_id
   enabled_cloudwatch_logs_exports = ["audit", "profiler"]
   vpc_security_group_ids          = []
 }

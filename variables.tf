@@ -75,3 +75,8 @@ variable "master_password" {
 variable "apply_immediately" {
   default = false
 }
+
+variable "kms_key_id" {
+  type        = string
+  description = "The ARN of the key to encrypt the db with."
+}

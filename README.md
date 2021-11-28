@@ -114,6 +114,7 @@ No modules.
 | <a name="input_instance_class"></a> [instance\_class](#input\_instance\_class) | n/a | `string` | `"db.r5.large"` | no |
 | <a name="input_instance_count"></a> [instance\_count](#input\_instance\_count) | n/a | `number` | `1` | no |
 | <a name="input_instance_maintenance_window"></a> [instance\_maintenance\_window](#input\_instance\_maintenance\_window) | n/a | `string` | `"Sat:00:00-Sat:03:00"` | no |
+| <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | The ARN of the key to encrypt the db with. | `string` | n/a | yes |
 | <a name="input_master_password"></a> [master\_password](#input\_master\_password) | DocumentDB Password | `string` | n/a | yes |
 | <a name="input_master_username"></a> [master\_username](#input\_master\_username) | n/a | `string` | `"docadmin"` | no |
 | <a name="input_param_group_name"></a> [param\_group\_name](#input\_param\_group\_name) | n/a | `string` | `"examplea"` | no |
@@ -154,7 +155,7 @@ Please use the [issue tracker](https://github.com/jameswoolfenden/terraform-aws-
 
 ## Copyrights
 
-Copyright © 2019-2021 James Woolfenden
+Copyright 2019-2021 James Woolfenden
 
 ## License
 
