@@ -76,15 +76,16 @@ Policies used to create and destroy this resource:
 ## Detailed Notes
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 ## Requirements
 
 No requirements.
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| Name                                             | Version |
+| ------------------------------------------------ | ------- |
+| <a name="provider_aws"></a> [aws](#provider_aws) | n/a     |
 
 ## Modules
 
@@ -92,47 +93,48 @@ No modules.
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [aws_docdb_cluster.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_cluster) | resource |
-| [aws_docdb_cluster_instance.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_cluster_instance) | resource |
-| [aws_docdb_cluster_parameter_group.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_cluster_parameter_group) | resource |
-| [aws_docdb_subnet_group.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_subnet_group) | resource |
-| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
+| Name                                                                                                                                                    | Type        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| [aws_docdb_cluster.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_cluster)                                 | resource    |
+| [aws_docdb_cluster_instance.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_cluster_instance)               | resource    |
+| [aws_docdb_cluster_parameter_group.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_cluster_parameter_group) | resource    |
+| [aws_docdb_subnet_group.examplea](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/docdb_subnet_group)                       | resource    |
+| [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones)                   | data source |
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_apply_immediately"></a> [apply\_immediately](#input\_apply\_immediately) | n/a | `bool` | `false` | no |
-| <a name="input_backup_retention_period"></a> [backup\_retention\_period](#input\_backup\_retention\_period) | n/a | `number` | `5` | no |
-| <a name="input_change_stream_log_retention_duration"></a> [change\_stream\_log\_retention\_duration](#input\_change\_stream\_log\_retention\_duration) | Defines the duration of time (in seconds) that the change stream log is retained and can be consumed. | `number` | `10800` | no |
-| <a name="input_cluster_identifier"></a> [cluster\_identifier](#input\_cluster\_identifier) | n/a | `string` | `"my-docdb-cluster"` | no |
-| <a name="input_deletion_protection"></a> [deletion\_protection](#input\_deletion\_protection) | n/a | `bool` | `false` | no |
-| <a name="input_family"></a> [family](#input\_family) | n/a | `string` | `"docdb3.6"` | no |
-| <a name="input_instance-prefix"></a> [instance-prefix](#input\_instance-prefix) | n/a | `string` | `"docdb-cluster-demo"` | no |
-| <a name="input_instance_class"></a> [instance\_class](#input\_instance\_class) | n/a | `string` | `"db.r5.large"` | no |
-| <a name="input_instance_count"></a> [instance\_count](#input\_instance\_count) | n/a | `number` | `1` | no |
-| <a name="input_instance_maintenance_window"></a> [instance\_maintenance\_window](#input\_instance\_maintenance\_window) | n/a | `string` | `"Sat:00:00-Sat:03:00"` | no |
-| <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | The ARN of the key to encrypt the db with. | `string` | n/a | yes |
-| <a name="input_master_password"></a> [master\_password](#input\_master\_password) | DocumentDB Password | `string` | n/a | yes |
-| <a name="input_master_username"></a> [master\_username](#input\_master\_username) | n/a | `string` | `"docadmin"` | no |
-| <a name="input_param_group_name"></a> [param\_group\_name](#input\_param\_group\_name) | n/a | `string` | `"examplea"` | no |
-| <a name="input_profiler"></a> [profiler](#input\_profiler) | n/a | `string` | `"disabled"` | no |
-| <a name="input_profiler_sampling_rate"></a> [profiler\_sampling\_rate](#input\_profiler\_sampling\_rate) | Defines the sampling rate for logged operations. | `number` | `1` | no |
-| <a name="input_profiler_threshold_ms"></a> [profiler\_threshold\_ms](#input\_profiler\_threshold\_ms) | Defines the threshold for profiler | `number` | `100` | no |
-| <a name="input_promotion_tier"></a> [promotion\_tier](#input\_promotion\_tier) | n/a | `number` | `0` | no |
-| <a name="input_subnet_group_name"></a> [subnet\_group\_name](#input\_subnet\_group\_name) | n/a | `string` | `"docdb"` | no |
-| <a name="input_subnet_list"></a> [subnet\_list](#input\_subnet\_list) | n/a | `list(any)` | n/a | yes |
-| <a name="input_ttl_monitor"></a> [ttl\_monitor](#input\_ttl\_monitor) | n/a | `string` | `"enabled"` | no |
+| Name                                                                                                                                          | Description                                                                                           | Type        | Default                 | Required |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------- | ----------------------- | :------: |
+| <a name="input_apply_immediately"></a> [apply_immediately](#input_apply_immediately)                                                          | n/a                                                                                                   | `bool`      | `false`                 |    no    |
+| <a name="input_backup_retention_period"></a> [backup_retention_period](#input_backup_retention_period)                                        | n/a                                                                                                   | `number`    | `5`                     |    no    |
+| <a name="input_change_stream_log_retention_duration"></a> [change_stream_log_retention_duration](#input_change_stream_log_retention_duration) | Defines the duration of time (in seconds) that the change stream log is retained and can be consumed. | `number`    | `10800`                 |    no    |
+| <a name="input_cluster_identifier"></a> [cluster_identifier](#input_cluster_identifier)                                                       | n/a                                                                                                   | `string`    | `"my-docdb-cluster"`    |    no    |
+| <a name="input_deletion_protection"></a> [deletion_protection](#input_deletion_protection)                                                    | n/a                                                                                                   | `bool`      | `false`                 |    no    |
+| <a name="input_family"></a> [family](#input_family)                                                                                           | n/a                                                                                                   | `string`    | `"docdb3.6"`            |    no    |
+| <a name="input_instance-prefix"></a> [instance-prefix](#input_instance-prefix)                                                                | n/a                                                                                                   | `string`    | `"docdb-cluster-demo"`  |    no    |
+| <a name="input_instance_class"></a> [instance_class](#input_instance_class)                                                                   | n/a                                                                                                   | `string`    | `"db.r5.large"`         |    no    |
+| <a name="input_instance_count"></a> [instance_count](#input_instance_count)                                                                   | n/a                                                                                                   | `number`    | `1`                     |    no    |
+| <a name="input_instance_maintenance_window"></a> [instance_maintenance_window](#input_instance_maintenance_window)                            | n/a                                                                                                   | `string`    | `"Sat:00:00-Sat:03:00"` |    no    |
+| <a name="input_kms_key_id"></a> [kms_key_id](#input_kms_key_id)                                                                               | The ARN of the key to encrypt the db with.                                                            | `string`    | n/a                     |   yes    |
+| <a name="input_master_password"></a> [master_password](#input_master_password)                                                                | DocumentDB Password                                                                                   | `string`    | n/a                     |   yes    |
+| <a name="input_master_username"></a> [master_username](#input_master_username)                                                                | n/a                                                                                                   | `string`    | `"docadmin"`            |    no    |
+| <a name="input_param_group_name"></a> [param_group_name](#input_param_group_name)                                                             | n/a                                                                                                   | `string`    | `"examplea"`            |    no    |
+| <a name="input_profiler"></a> [profiler](#input_profiler)                                                                                     | n/a                                                                                                   | `string`    | `"disabled"`            |    no    |
+| <a name="input_profiler_sampling_rate"></a> [profiler_sampling_rate](#input_profiler_sampling_rate)                                           | Defines the sampling rate for logged operations.                                                      | `number`    | `1`                     |    no    |
+| <a name="input_profiler_threshold_ms"></a> [profiler_threshold_ms](#input_profiler_threshold_ms)                                              | Defines the threshold for profiler                                                                    | `number`    | `100`                   |    no    |
+| <a name="input_promotion_tier"></a> [promotion_tier](#input_promotion_tier)                                                                   | n/a                                                                                                   | `number`    | `0`                     |    no    |
+| <a name="input_subnet_group_name"></a> [subnet_group_name](#input_subnet_group_name)                                                          | n/a                                                                                                   | `string`    | `"docdb"`               |    no    |
+| <a name="input_subnet_list"></a> [subnet_list](#input_subnet_list)                                                                            | n/a                                                                                                   | `list(any)` | n/a                     |   yes    |
+| <a name="input_ttl_monitor"></a> [ttl_monitor](#input_ttl_monitor)                                                                            | n/a                                                                                                   | `string`    | `"enabled"`             |    no    |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_cluster"></a> [cluster](#output\_cluster) | n/a |
-| <a name="output_instance"></a> [instance](#output\_instance) | n/a |
-| <a name="output_properties"></a> [properties](#output\_properties) | n/a |
+| Name                                                              | Description |
+| ----------------------------------------------------------------- | ----------- |
+| <a name="output_cluster"></a> [cluster](#output_cluster)          | n/a         |
+| <a name="output_instance"></a> [instance](#output_instance)       | n/a         |
+| <a name="output_properties"></a> [properties](#output_properties) | n/a         |
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Related Projects
@@ -155,7 +157,7 @@ Please use the [issue tracker](https://github.com/jameswoolfenden/terraform-aws-
 
 ## Copyrights
 
-Copyright 2019-2021 James Woolfenden
+Copyright 2019-2022 James Woolfenden
 
 ## License
 
