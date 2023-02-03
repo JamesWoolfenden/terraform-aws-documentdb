@@ -157,7 +157,9 @@ resource "aws_iam_policy" "terraform_pike" {
             "Action": [
                 "ec2:DescribeAvailabilityZones"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         },
         {
             "Sid": "VisualEditor1",
@@ -173,7 +175,9 @@ resource "aws_iam_policy" "terraform_pike" {
                 "rds:ListTagsForResource",
                 "rds:ModifyDBClusterParameterGroup"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         }
     ]
 })
@@ -203,7 +207,7 @@ Please use the [issue tracker](https://github.com/jameswoolfenden/terraform-aws-
 
 ## Copyrights
 
-Copyright 2019-2022 James Woolfenden
+Copyright © 2019-2023 James Woolfenden
 
 ## License
 
