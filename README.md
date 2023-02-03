@@ -48,31 +48,6 @@ Project: JamesWoolfenden/terraform-aws-documentdb/example/examplea
  OVERALL TOTAL                                                                                       $237.25
 ```
 
-## IAM Permissions
-
-Policies used to create and destroy this resource:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": [
-        "documentdb:DELETE",
-        "documentdb:GET",
-        "documentdb:PATCH",
-        "documentdb:POST",
-        "documentdb:PUT",
-        "documentdb:SetWebACL",
-        "documentdb:UpdateRestApiPolicy"
-      ],
-      "Effect": "Allow",
-      "Resource": "*"
-    }
-  ]
-}
-```
-
 ## Detailed Notes
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
