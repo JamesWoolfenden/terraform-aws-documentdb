@@ -1,6 +1,6 @@
 # terraform-aws-documentdb
 
-[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-documentdb/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-documentdb)
+[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-documentdb/workflows/Verify/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-documentdb)
 [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-documentdb.svg)](https://github.com/JamesWoolfenden/terraform-aws-documentdb/releases/latest)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/JamesWoolfenden/terraform-aws-documentdb.svg?label=latest)](https://github.com/JamesWoolfenden/terraform-aws-documentdb/releases/latest)
 ![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.14.0-blue.svg)
@@ -130,6 +130,7 @@ resource "aws_iam_policy" "terraform_pike" {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
+                "ec2:DescribeAccountAttributes",
                 "ec2:DescribeAvailabilityZones"
             ],
             "Resource": [
@@ -140,15 +141,24 @@ resource "aws_iam_policy" "terraform_pike" {
             "Sid": "VisualEditor1",
             "Effect": "Allow",
             "Action": [
+                "rds:CreateDBCluster",
                 "rds:CreateDBClusterParameterGroup",
+                "rds:CreateDBInstance",
                 "rds:CreateDBSubnetGroup",
+                "rds:DeleteDBCluster",
                 "rds:DeleteDBClusterParameterGroup",
+                "rds:DeleteDBInstance",
                 "rds:DeleteDBSubnetGroup",
                 "rds:DescribeDBClusterParameterGroups",
                 "rds:DescribeDBClusterParameters",
+                "rds:DescribeDBClusters",
+                "rds:DescribeDBInstances",
                 "rds:DescribeDBSubnetGroups",
+                "rds:DescribeGlobalClusters",
                 "rds:ListTagsForResource",
-                "rds:ModifyDBClusterParameterGroup"
+                "rds:ModifyDBCluster",
+                "rds:ModifyDBClusterParameterGroup",
+                "rds:ModifyDBInstance"
             ],
             "Resource": [
                 "*"
