@@ -38,7 +38,6 @@ resource "aws_docdb_cluster_parameter_group" "examplea" {
     value = var.ttl_monitor
   }
 }
-
 variable "profiler_sampling_rate" {
   default     = 1.0
   type        = number
@@ -48,7 +47,6 @@ variable "profiler_sampling_rate" {
     error_message = "Sampling rate >= 0.0 and equal or less than 1.0."
   }
 }
-
 variable "profiler_threshold_ms" {
   default     = 100
   type        = number
@@ -58,8 +56,6 @@ variable "profiler_threshold_ms" {
     error_message = "Valid values lie 50-2147483646."
   }
 }
-
-
 variable "ttl_monitor" {
   type    = string
   default = "enabled"
@@ -68,7 +64,6 @@ variable "ttl_monitor" {
     error_message = "Can be enabled or disabled."
   }
 }
-
 variable "profiler" {
   type    = string
   default = "disabled"
@@ -77,7 +72,6 @@ variable "profiler" {
     error_message = "Can be enabled or disabled."
   }
 }
-
 variable "change_stream_log_retention_duration" {
   type        = number
   default     = 10800
@@ -87,5 +81,3 @@ variable "change_stream_log_retention_duration" {
     error_message = "Must be 3600-86400."
   }
 }
-
-//https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_groups-list_of_parameters.html

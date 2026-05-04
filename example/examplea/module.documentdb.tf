@@ -18,5 +18,6 @@ resource "random_string" "password" {
   length = 16
 }
 resource "aws_kms_key" "example" {
+  # checkov:skip=CKV2_AWS_64: For example only, key policy managed via IAM
   enable_key_rotation = true
 }
