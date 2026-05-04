@@ -141,6 +141,16 @@ resource "aws_iam_policy" "terraform_pike" {
             "Sid": "VisualEditor1",
             "Effect": "Allow",
             "Action": [
+                "iam:CreateServiceLinkedRole"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": [
                 "rds:CreateDBCluster",
                 "rds:CreateDBClusterParameterGroup",
                 "rds:CreateDBInstance",
@@ -158,7 +168,8 @@ resource "aws_iam_policy" "terraform_pike" {
                 "rds:ListTagsForResource",
                 "rds:ModifyDBCluster",
                 "rds:ModifyDBClusterParameterGroup",
-                "rds:ModifyDBInstance"
+                "rds:ModifyDBInstance",
+                "rds:ModifyDBSubnetGroup"
             ],
             "Resource": [
                 "*"
