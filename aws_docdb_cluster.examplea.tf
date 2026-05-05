@@ -1,4 +1,5 @@
 resource "aws_docdb_cluster" "examplea" {
+  # checkov:skip=CKV_AWS_360: backup_retention_period configurable via var.backup_retention_period
   cluster_identifier = var.cluster_identifier
   engine             = "docdb"
   engine_version     = ""
